@@ -3,7 +3,7 @@
 </p>
 
 <h1>Implementing Active Directory Infrastructure within Microsoft Azure Virtual Machines </h1>
-This walkthrough outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+This walkthrough outlines the implementation of Active Directory infrastructure, to allow full deployment within Azure Virtual Machines <br />
 
 
 <h2>Video Demonstration</h2>
@@ -12,22 +12,22 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 <h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
+- Microsoft Azure (Virtual Machines/Network)
 - Remote Desktop
-- Active Directory Domain Services
+- Windows Firewall
 - PowerShell
 
 <h2>Operating Systems Used </h2>
 
-- Windows Server 2022
-- Windows 10 (21H2)
+- Windows Server 2022 Datacenter
+- Windows 10 Pro (22H2)
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Create Virtual Network and Virtual Machines within Azure
+- Modify the Server VM's Private IP Address settings from within its Virtual NIC
+- Modify the Client VM's DNS settings to link to the Servers' Private IP Address 
+- Test connectivity by pinging the Server VM from the Client VM
 
 <h2>Deployment and Configuration Steps</h2>
 
