@@ -2,13 +2,13 @@
 <img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
 </p>
 
-<h1>Implementing Active Directory Infrastructure within Microsoft Azure Virtual Machines </h1>
-This walkthrough outlines the implementation of Active Directory infrastructure, to allow full deployment within Azure Virtual Machines <br />
+<h1>Building Active Directory Infrastructure using Microsoft Azure Virtual Machines </h1>
+This walkthrough outlines the implementation of building Active Directory infrastructure, to allow for full deployment within Azure Virtual Machines <br />
 
 
 <h2>Video Demonstration</h2>
 
-- ### [YouTube: Implementing Active Directory Infrastructure within Microsoft Azure VMs - Quinn McLaughlin](https://youtu.be/vqapby2E5ps)
+- ### [YouTube: Building Active Directory Infrastructure using Microsoft Azure VMs - Quinn McLaughlin](https://youtu.be/vqapby2E5ps)
 
 <h2>Environments and Technologies Used</h2>
 
