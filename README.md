@@ -35,7 +35,7 @@ This walkthrough outlines the implementation of Active Directory infrastructure,
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+To begin, we log into Microsoft Azure and create a new Resource Group to house everything we’ll build. Once this is created, we’ll create a Virtual Network server for our consequent Virtual Machines to run within. In this scenario, I decided to have the region of our Virtual Network set to ‘East US 2’, and as the VM’s are built, they will also be put into the same region. Once the Virtual Network deploys we can build both of our Virtual Machines, with the key difference between them being the operating system we choose for each. One will be launched with Windows Datacenter (DC-1), and the other will run Windows 10 (Client-1). Before subsequent deployment, we also make sure each VM is set to the Virtual Network we created previously, which can be found within the Networking tab. After this, both VM’s can be deployed.
 </p>
 <br />
 
@@ -43,7 +43,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+After successful deployment of the Datacenter VM (we don’t have to wait for both to deploy for this step), we navigate to its ‘Networking’ tab within Azure. Here we can click on ‘Network Settings’ in the dropdown menu which allows us to see DC-1’s Virtual NIC. Clicking on this will bring us to a window where we can set the VM’s Private IP Address settings to static, which is necessary for utilizing it as a Domain Controller. In this case, the Private IP Address was locked to ‘10.0.0.4’. We can then go into the VM’s ‘Overview’ tab to copy the Public IP Address and Remote Desktop into the VM, using the credentials we chose while deploying the VM to log in. Once logged in, we’ll open Windows Firewall (wf.msc) and disable it within the Domain, Private, and Public Profile tabs.
 </p>
 <br />
 
@@ -51,6 +51,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Next, we navigate back into Azure and follow the same steps as we did earlier to access our ‘Client’ VM’s Virtual NIC. Once inside, we’ll click ‘DNS Servers’ from the ‘Settings’ drop-down tab, and change the DNS Server to ‘Custom’. This will allow us to input our Domain Controller’s Private IP Address (why it was necessary to make the IP Address static), which allows our VM’s to communicate with the Client VM using the DC VM as its DNS server from now on. After saving, we also choose to restart the Client VM to ensure the changes update. We then copy the Client VM’s Public IP Address, and Remote Desktop in, just as we did with the Domain Controller VM. 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lastly, to showcase the connection of the two VM’s, we open Windows Powershell within the Client VM. Typing ‘ping’ alongside the DC’s Private IP Address (10.0.0.4) will show us that the VM’s are able to send and receive data from one another. To dig a bit deeper, we’ll also type ‘ipconfig /all’, which upon scrolling down will show the DC’s Private IP Address listed as ‘DNS Servers’, showing us the infrastructure is now in place to deploy Active Directory (showcased in a separate project).
 </p>
 <br />
